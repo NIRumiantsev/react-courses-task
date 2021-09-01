@@ -9,7 +9,7 @@ type RouteItem = {
 
 const routes: RouteItem[] = [
   {
-    path: '/courses/:type?',
+    path: '/courses/:category?',
     component: CoursesPage,
   },
   {

@@ -5,10 +5,12 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { appRoutes } from './routes';
+import { PagesMenu } from './UI';
 
 const App = ():ReactComponentElement<any> => {
   return (
     <Router>
+      <PagesMenu/>
       <Switch>
         {appRoutes}
         <Redirect to={'/courses'}/>

@@ -1,9 +1,30 @@
 import { ReactComponentElement } from 'react';
+import { PageHeader } from 'UI';
+import { NavigationItem } from 'types';
 
-const CoursesPage = ():ReactComponentElement<any> => {
+const navigationItems: NavigationItem[] = [
+  {
+    name: 'Popular',
+    route: '/courses/popular',
+  },
+  {
+    name: 'Favorite',
+    route: '/courses/favorite',
+  },
+  {
+    name: 'New',
+    route: '/courses/new',
+  },
+];
+
+const CoursesPage = ():ReactComponentElement<'div'> => {
   return (
     <div>
-      <h1>Courses</h1>
+      <PageHeader
+        title="Courses"
+        withNavigation={true}
+        navigationItems={navigationItems}
+      />
     </div>
   )
 };
