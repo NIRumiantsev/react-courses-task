@@ -1,23 +1,23 @@
-import { ReactComponentElement } from 'react';
-import { PageHeader } from 'UI';
+import { ReactComponentElement, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+import { observer } from 'mobx-react';
+import { PageHeader, CoursesList } from 'UI';
 import { NavigationItem } from 'types';
+import { coursesStore } from 'stores';
 
-const navigationItems: NavigationItem[] = [
-  {
-    name: 'Popular',
-    route: '/courses/popular',
-  },
-  {
-    name: 'Favorite',
-    route: '/courses/favorite',
-  },
-  {
-    name: 'New',
-    route: '/courses/new',
-  },
-];
+const CoursesPage = observer(():ReactComponentElement<'div'> => {
+  const params: {[key: string]: string} = useParams();
+  const { category } = params;
 
-const CoursesPage = ():ReactComponentElement<'div'> => {
+  let navigationItems: NavigationItem[] = [];
+
+  useMemo(() => {
+    navigationItems = coursesStore.categories.map((category: string) => ({
+      name: category,
+      route: `/courses/${category.toLowerCase()}`,
+    }));
+  }, [coursesStore.categories, category]);
+
   return (
     <div>
       <PageHeader
@@ -25,8 +25,9 @@ const CoursesPage = ():ReactComponentElement<'div'> => {
         withNavigation={true}
         navigationItems={navigationItems}
       />
+      <CoursesList currentCategory={category}/>
     </div>
   )
-};
+});
 
 export { CoursesPage };
