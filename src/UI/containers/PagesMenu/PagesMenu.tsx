@@ -9,6 +9,8 @@ import {
   ShoppingActiveIcon,
 } from 'assets';
 
+import './PagesMenu.scss';
+
 type MenuItem = {
   name: string,
   route: string,
@@ -41,7 +43,7 @@ const PagesMenu = ():ReactComponentElement<'div'> => {
   const [selectedItem, setSelectedItem] = useState('courses');
 
   return (
-    <div>
+    <div className="PagesMenu">
       {
         menuItems.map((item: MenuItem) => {
           return (
@@ -49,6 +51,7 @@ const PagesMenu = ():ReactComponentElement<'div'> => {
               key={`navigation-link-${item.name}`}
               to={item.route}
               onClick={() => setSelectedItem(item.name)}
+              className={`PagesMenu_link${selectedItem === item.name ? '--active' : ''}`}
             >
               <img
                 src={selectedItem === item.name ? item.iconActive : item.icon}

@@ -2,20 +2,26 @@ import { ReactComponentElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavigationItem } from 'types';
 
+import './Navigation.scss';
+
 type NavigationProps = {
   navigationItems: NavigationItem[],
+  selectedItemName?: string,
 };
 
-const Navigation = ({ navigationItems }: NavigationProps):ReactComponentElement<'nav'> => {
-  const [selectedItem, setSelectedItem] = useState<string>('');
+const Navigation = (props: NavigationProps):ReactComponentElement<'nav'> => {
+  const {
+    navigationItems,
+    selectedItemName,
+  } = props;
 
   return (
-    <nav>
+    <nav className="Navigation">
       {
         navigationItems.map((item: NavigationItem) =>
           <Link
+            className={`Navigation_link${item.name.toLowerCase() === selectedItemName ? '--active' : ''}`}
             to={item.route}
-            onClick={() => setSelectedItem(item.name)}
             key={`header-navigation-${item.name}`}
           >
             {item.name}

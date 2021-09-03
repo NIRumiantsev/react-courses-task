@@ -1,9 +1,10 @@
 import { ReactComponentElement } from 'react';
+import { PageHeader } from 'UI';
 
-const ProfilePage = ():ReactComponentElement<any> => {
+const ProfilePage = ():ReactComponentElement<'div'> => {
   return (
     <div>
-      <h1>Profile</h1>
+      <PageHeader title="Profile"/>
     </div>
   )
 };

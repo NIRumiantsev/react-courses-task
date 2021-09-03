@@ -1,0 +1,51 @@
+@keyframes fade-in {
+  0% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+
+.CourseCard {
+  content: '';
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: calc((100vw - 360px) * 0.4);
+  border-radius: 24px;
+  margin-bottom: 60px;
+  padding: 42px;
+  animation: fade-in 0.3s linear;
+  @media screen and (max-width: 1025px) {
+    padding: 20px 18px 40px;
+    height: 274px;
+  }
+  &_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+  }
+  &_holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    @media screen and (max-width: 460px) {
+      flex-direction: column;
+    }
+  }
+  &_title {
+    margin: 0 0 14px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    @media screen and (max-width: 1025px) {
+      margin: 0;
+    }
+  }
+  &_text {
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}

@@ -4,6 +4,7 @@ import ProfileIcon from './profile.svg';
 import ProfileActiveIcon from './profile-active.svg';
 import ShoppingIcon from './shopping.svg';
 import ShoppingActiveIcon from './shopping-active.svg';
+import PlayIcon from './play.svg';
 
 export {
   CoursesIcon,
@@ -12,4 +13,5 @@ export {
   ProfileActiveIcon,
   ShoppingIcon,
   ShoppingActiveIcon,
+  PlayIcon,
 };

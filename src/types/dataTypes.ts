@@ -25,5 +25,6 @@ export type FormatCourse = {
   name: string,
   category: string,
   duration: number,
+  lessons: number,
   cover: string,
 }

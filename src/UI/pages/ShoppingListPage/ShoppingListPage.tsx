@@ -1,9 +1,10 @@
 import { ReactComponentElement } from 'react';
+import { PageHeader } from 'UI';
 
-const ShoppingListPage = ():ReactComponentElement<any> => {
+const ShoppingListPage = ():ReactComponentElement<'div'> => {
   return (
     <div>
-      <h1>Shopping List</h1>
+      <PageHeader title="Shopping Page"/>
     </div>
   )
 };

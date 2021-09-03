@@ -8,6 +8,8 @@ import { appRoutes } from './routes';
 import { PagesMenu } from 'UI';
 import { serviceLocator } from 'services';
 
+import 'App.scss';
+
 const App = ():ReactComponentElement<any> => {
   useEffect(() => {
     const loadCoursesData = async () => {
@@ -21,14 +23,18 @@ const App = ():ReactComponentElement<any> => {
 
   return (
     <Router>
-      <PagesMenu/>
-      <Switch>
-        {appRoutes}
-        <Redirect to={'/courses'}/>
-      </Switch>
+      <div className="App">
+        <div className="App_container">
+          <PagesMenu/>
+          <Switch>
+            {appRoutes}
+            <Redirect to={'/courses'}/>
+          </Switch>
+        </div>
+      </div>
     </Router>
   );
-  // Temporary redirects to courses page, while there is no landing page and/or pages for error cases
+  // Temporary redirects to courses page while there is no landing page and/or pages for error cases
 }
 
 export default App;

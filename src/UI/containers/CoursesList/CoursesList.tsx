@@ -13,12 +13,13 @@ const CoursesList = observer(({currentCategory}: CoursesListProps):ReactComponen
     <div>
       {
         coursesStore.formatCourses.map((course: FormatCourse) => {
-          if (course.category.toLowerCase() === currentCategory) {
+          if (course.category.toLowerCase() === currentCategory || !currentCategory) {
             return (
               <CourseCard
                 key={`course-card-${course.id}`}
                 name={course.name}
                 duration={course.duration}
+                lessons={course.lessons}
                 cover={course.cover}
               />
             )
