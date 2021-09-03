@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { ReactComponentElement, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
+import { appRoutes } from './routes';
+import { PagesMenu } from 'UI';
+import { serviceLocator } from 'services';
 
-function App() {
+import 'App.scss';
+
+const App = ():ReactComponentElement<any> => {
+  useEffect(() => {
+    const loadCoursesData = async () => {
+      await serviceLocator.coursesService.loadCategories();
+      await serviceLocator.coursesService.loadNames();
+      await serviceLocator.coursesService.loadDurations();
+      serviceLocator.coursesService.createFormatCourses();
+    };
+    loadCoursesData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <div className="App_container">
+          <PagesMenu/>
+          <Switch>
+            {appRoutes}
+            <Redirect to={'/courses'}/>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
+  // Temporary redirects to courses page while there is no landing page and/or pages for error cases
 }
 
 export default App;

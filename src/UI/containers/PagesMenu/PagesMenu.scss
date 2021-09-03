@@ -1,0 +1,28 @@
+.PagesMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 160px;
+  padding-top: 172px;
+  background: #FFE4D6;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @media screen and (max-width: 1025px) {
+    width: 100px;
+  }
+  &_link {
+    margin-bottom: 72px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-left: 6px solid transparent;
+    transition: all 0.3s;
+    &--active, &:hover {
+      @extend .PagesMenu_link;
+      border-left: 6px solid #8964D7;
+    }
+  }
+}

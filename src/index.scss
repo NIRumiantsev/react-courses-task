@@ -1,0 +1,16 @@
+@keyframes fade-in {
+  0% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #000000;
+  background: #FFF4EE;
+  font-size: 24px;
+  line-height: 29px;
+  animation: fade-in 1s linear;
+}
